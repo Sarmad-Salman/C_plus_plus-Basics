@@ -1,6 +1,7 @@
-/*Lab 9
-Sarmad Salman
-Muhammad Hassaan*/
+/*AVL Insertion Algorithm for a balanced binary tree*/
+
+
+
 #include<iostream>
 using namespace std;
 struct Node{
