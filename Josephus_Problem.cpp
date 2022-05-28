@@ -1,4 +1,4 @@
-/*   Josephus Problem Solution via Circular LinkedList
+/*   Josephus Problem Solution via Circular Doubly linked List
 */
 
 #include<iostream>
