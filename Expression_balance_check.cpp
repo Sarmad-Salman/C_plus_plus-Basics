@@ -1,3 +1,5 @@
+// Program to check if the entered equation is balanced or not
+
 #include <iostream>
 #include<conio.h>
 #include<string>
