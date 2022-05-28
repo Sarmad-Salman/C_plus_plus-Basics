@@ -1,6 +1,5 @@
-/*   Task 1
-Sarmad Salman
-Muhammad Hassaan
+/*   Stack Implementation via
+        Singly linked LinkedLists
 */
 
 #include<iostream>
