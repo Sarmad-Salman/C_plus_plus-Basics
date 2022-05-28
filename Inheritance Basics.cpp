@@ -5,114 +5,153 @@
 #include<string>
 using namespace std;
 class Employee {
-private:
 	string name;
-	float taxRate;
 public:
 	void setName(string n) {
 		name = n;
 	}
-	string getName() { 
+	string getName() {
 		return name;
-	}
-	virtual float calcSalary() {
-		return 0;
 	}
 	Employee(string nam) {
 		name = nam;
-		taxRate = 0.5;
-		calcSalary();
 	}
 	Employee() {
 		string name = "";
-		taxRate = 0;
-		calcSalary();
+	}
+	virtual string raiseSalary() {
+		return 0;
+	}
+	virtual Employee* promote(Employee *pro) {
+		return 0;
+	}
+	virtual string transfer() {
+		return 0;
+	}
+	virtual string getType() {
+		return 0;
 	}
 };
-class Salaried: public Employee {
-private:
-	int salary;
+class Manager : public Employee {
+	string s, t, q;
 public:
-	Salaried(string n, int SalarySal) {
-		salary = SalarySal;
+	Manager(string n) {
 		setName(n);
 	}
-	Salaried() {
-		salary = 0;
+	Manager() {
 		setName("");
 	}
-	float calcSalary() {
-		float tax = salary * 0.05;
-		return salary - tax;
+	string raiseSalary() {
+		s = "Salary of this Manager has been increased.";
+		return s;
+	}
+	Employee* promote(Employee *pro) {
+		cout << "This Manager has been promoted to an Upper Manager.";
+		pro = new Manager(getName());
+		return pro;
+	}
+	string transfer() {
+		t = "Salary of this Manager has been Transferred.";
+		return t;
+	}
+	string getType() {
+		q =  "Status is Manager.";
+		return q;
 	}
 };
-class Hourly: public Employee {
-private:
-	int hours, hourlyRate = 600, salary; float tax;
+class Engineer :public Employee {
+	string s, t, q;
 public:
-	Hourly(string n, int hoursmain) {
-		hours = hoursmain;
+	Engineer(string n) {
 		setName(n);
 	}
-	Hourly() {
-		hours = 1;
+	Engineer() {
 		setName("");
 	}
-	float calcSalary() {
-		salary = hours * hourlyRate;
-		float tax = salary * 0.05;
-		return salary - tax;
+	string raiseSalary() {
+		s = "Salary of this Engineer has been increased.";
+		return s;
+	}
+	Employee* promote(Employee *pro) {
+		delete pro;
+		pro = new Manager(getName());
+		return pro;
+	}
+	string transfer() {
+		t = "Salary of this Engineer has been Transferred.";
+		return t;
+	}
+	string getType() {
+		q = "Status is Engineer.";
+		return q;
 	}
 };
-class Commissioned: public Employee {
-private:
-	int sales; float commissionRate = 400;
+class Worker :public Employee {
+	string s, t, q;
 public:
-	Commissioned(string n, int salesmain) {
-		sales = salesmain;
+	Worker(string n) {
 		setName(n);
 	}
-	Commissioned() {
-		sales = 1;
+	Worker() {
 		setName("");
 	}
-	float calcSalary() {
-		float salary;
-		salary = sales * commissionRate;
-		float tax = salary * 0.05;
-		return salary - tax;
+	string raiseSalary() {
+		s = "Salary of this Worker has been increased.";
+		return s;
+	}
+	Employee* promote(Employee *pro) {
+        delete pro;
+		pro = new Engineer(getName());
+		return pro;
+	}
+	string transfer() {
+		t = "Salary of this Worker has been Transferred.";
+		return t;
+	}
+	string getType() {
+		q = "Status is Worker.";
+		return q;
 	}
 };
 int main() {
-	int numemp, typeemp, hrs, sales, tax, salary; string name;
+	int numEmp, numTask; string name, typeEmp, task;
 	cout << "Enter Number of Employees = ";
-	cin >> numemp;
-	Employee* EMP[10];
-	for (int i = 0; i < numemp; ++i) {
+	cin >> numEmp;
+	Employee* Emp[numEmp];
+	for (int i = 0; i < numEmp; ++i) {
 		cout << "Enter Name of " << i + 1 << " Employee = ";
 		cin >> name;
 		cout << "Type of Employee = ";
-		cin >> typeemp;
-		if (typeemp == 1) {
-			cout << "Enter Salary = ";
-			cin >> salary;
-			EMP[i] = new Salaried(name, salary);
+		cin >> typeEmp;
+		if (typeEmp == "Manager") {
+			Emp[i] = new Manager(name);
 		}
-		else if (typeemp == 2) {
-			cout << "Enter Hours = ";
-			cin >> hrs;
-			EMP[i] = new Hourly(name, hrs);
+		if (typeEmp == "Engineer") {
+			Emp[i] = new Engineer(name);
 		}
-		else if (typeemp == 3) {
-			cout << "Enter Sales = ";
-			cin >> sales;
-			EMP[i] = new Commissioned(name, sales);
+		if (typeEmp == "Worker") {
+			Emp[i] = new Worker(name);
 		}
-		else
-			cout << "Error, only 1, 2 or 3 valid inputs";
 	}
-	cout << "Employee Name\t Salary\n";
-	for (int i = 0; i < numemp; ++i) {
-		cout << EMP[i]->getName() << "\t\t" << EMP[i]->calcSalary() << endl;
+	for (int i = 0; i < numEmp; ++i) {
+		cout << "Employee Name = "<< Emp[i]->getName() << endl;
+		cout <<"Number of tasks to be peformed on this Employee = ";
+		cin >> numTask;
+		for (int j = 0; j < numTask; ++j) {
+			cout << "Enter the task that you wish to perform: ";
+			cin >> task;
+			if (task == "RaiseSalary") {
+				cout << Emp[i]->raiseSalary();
+			}
+			if (task == "Promote") {
+				Emp[i]->promote(Emp[i]);
+				cout << Emp[i]->getType();
+			}
+			if (task == "Transfer") {
+				cout << Emp[i]->transfer();
+			}
+			cout << endl;
+		}
 	}
+	return 0;
 }
