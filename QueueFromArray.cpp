@@ -1,5 +1,4 @@
-/*  Sarmad Salman
-    Muhammad Hassaan*/
+/*  Queue Implementation via Circular Array for maximum efficiency */
 
 #include<iostream>
 #include<conio.h>
