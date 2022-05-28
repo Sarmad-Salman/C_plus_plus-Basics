@@ -1,30 +1,9 @@
 /*
-	Lab 11b
-	Muhammad Hassaan
-	Sarmad Salman
+	Insertion Sort Algorithm
 */
 
 #include <iostream>
 using namespace std;
-
-/*
-void insertionSort(int arr[], int size)
-{
-	int j, data;
-	for (int i = 1; i < size; i++)
-	{
-		data = arr[i];
-		j = i - 1;
-
-		while (j >= 0 && arr[j] > data)	// Elements Greater than Current Data are Moved to Positions Ahead
-		{
-			arr[j + 1] = arr[j];
-			j = j - 1;
-		}
-		arr[j + 1] = data;
-	}
-}
-*/
 
 void insertionSort(int arr[], int size)
 {
