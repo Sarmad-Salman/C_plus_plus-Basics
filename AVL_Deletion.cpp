@@ -1,3 +1,6 @@
+// Program to delete node in an AVL binary tree
+
+
 #include <iostream>
 using namespace std;
 
@@ -78,7 +81,7 @@ void postOrder(Node *root)	// Prints the Post-Order Traversal of the Tree (Left,
 
 		z                               y
 	   / \       Right Rotation		   / \
-	  y   b      – - – - – - – >	  x   z
+	  y   b      â€“ - â€“ - â€“ - â€“ >	  x   z
 	 / \         < - - - - - - -		 / \
 	x   a        Left Rotation          a   b
 
