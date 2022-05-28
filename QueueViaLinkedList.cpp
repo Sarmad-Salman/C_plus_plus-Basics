@@ -1,6 +1,4 @@
-/*  Task 7b
-    Sarmad Salman
-    Muhammad Hassaan*/
+/*  Queue Implementation via LinkedList*/
 
 #include<iostream>
 using namespace std;
