@@ -1,6 +1,4 @@
-/*   Task 2
-Sarmad Salman
-Muhammad Hassaan
+/*   Josephus Problem Solution via Circular LinkedList
 */
 
 #include<iostream>
